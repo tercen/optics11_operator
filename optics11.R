@@ -11,20 +11,26 @@ do.optics11 = function(data, label){
    
   df = data.frame(time=time,loads=loads,indentation=indentation)
   
-  dff = df %>% filter(loads > 5 , time > 10 , time < 75 )
-   
+  dff = df %>% filter(loads > 0.3 , time > 10 , time < max(time) - 5 )
+    
   ################## 
+ 
   loads.smooth = kernapply( dff$loads, kernel("modified.daniell", c(9,9,9)))
-  
-  peakhits = peakPick::peakpick(matrix(loads.smooth , ncol=1), 100, peak.npos=500)
+  loads.smooth = dff$loads
+    
+  peakhits = peakPick::peakpick(matrix(loads.smooth , ncol=1), 100, peak.npos=10)
   
   peak.index = which(peakhits == TRUE)
     
   peaks.df = data.frame(time=dff$time[peak.index], load= dff$load[peak.index])
    
   cluster.df = data.frame(time=peaks.df$time)
+  
+  plot(cluster.df)
    
   nc = NbClust(cluster.df, min.nc=2, max.nc=6, method="centroid", index='hartigan')
+  
+  print(nc)
   
   fit.km = kmeans(cluster.df, nc$Best.n[1], nstart=25)
   

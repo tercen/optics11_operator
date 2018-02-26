@@ -1,7 +1,7 @@
 PackratFormat: 1.4
 PackratVersion: 0.4.8.52
 RVersion: 3.3.2
-Repos: CRAN=https://cran.rstudio.com
+Repos: CRAN=http://cran.rstudio.com/
 
 Package: BH
 Source: CRAN
@@ -147,13 +147,13 @@ GithubSubdir: rtson
 
 Package: tercen
 Source: github
-Version: 0.4.16
-Hash: 78020e6a6e477b4c8972cb09744e8b04
+Version: 0.4.21
+Hash: 8d74606d3d93f0d37681d605e8615b0f
 Requires: R6, dplyr, httr, jsonlite, rtson, tibble, yaml
 GithubRepo: teRcen
 GithubUsername: tercen
-GithubRef: 0.4.17
-GithubSha1: 00fc2ef7287fb620187ca954d4d9b1f885cc0b23
+GithubRef: 0.4.21
+GithubSha1: 310c7ecc732be2444923d6fe5f5d09066fc8322c
 
 Package: tibble
 Source: CRAN
